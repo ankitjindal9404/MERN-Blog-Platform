@@ -24,7 +24,7 @@ function CreateBlog() {
         { headers: { 'x-auth-token': token } }
       );
       alert('Blog created successfully!');
-      navigate('/blogs'); // Navigate to blog list
+      navigate('/'); // Navigate to blog list
     } catch (err) {
       setError('Error: ' + err.response?.data?.msg || 'Server error');
     }
