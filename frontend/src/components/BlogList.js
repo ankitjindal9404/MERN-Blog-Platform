@@ -42,25 +42,93 @@ function BlogList() {
   };
 
   return (
-    <div>
-      <h2>My Blogs</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+    <div style={styles.container}>
+      <h2 style={styles.header}>My Blogs</h2>
+      {error && <p style={styles.error}>{error}</p>}
+      <div style={styles.blogList}></div>
       {blogs.length > 0 ? (
-        <ul>
-          {blogs.map((blog) => (
-            <li key={blog._id}>
-              <h3>{blog.title}</h3>
-              <p>{blog.content}</p>
+        blogs.map((blog) => (
+            <div key={blog._id} style={styles.blogCard}>
+              <h3 style={styles.blogTitle}>{blog.title}</h3>
+              <p style={styles.blogContent}>{blog.content}</p>
               <p><strong>Author:</strong> {blog.author.username}</p>
-              <button onClick={() => handleDelete(blog._id)}>Delete</button>
-            </li>
-          ))}
-        </ul>
+              {/* <button style={styles.readMoreButton}>Read More</button> */}
+              <button onClick={() => handleDelete(blog._id)} style={styles.deleteButton}>Delete</button>
+            </div>
+          ))
       ) : (
-        <p>No blogs found.</p>
+        <p style={styles.noBlogs}>No blogs found.</p>
       )}
     </div>
   );
 }
+
+const styles = {
+  container: {
+    margin: '0 auto',
+    padding: '20px',
+    maxWidth: '900px',
+  },
+  header: {
+    textAlign: 'center',
+    fontSize: '36px',
+    color: '#333',
+    marginBottom: '30px',
+  },
+  error: {
+    color: 'red',
+    fontSize: '18px',
+    textAlign: 'center',
+  },
+  blogList: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: '20px',
+    padding: '20px',
+  },
+  blogCard: {
+    backgroundColor: '#fff',
+    padding: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    transition: 'all 0.3s ease-in-out',
+  },
+  blogCardHover: {
+    transform: 'scale(1.05)',
+    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+  },
+  blogTitle: {
+    fontSize: '24px',
+    color: '#333',
+    marginBottom: '10px',
+  },
+  blogContent: {
+    color: '#555',
+    fontSize: '16px',
+    marginBottom: '10px',
+  },
+  deleteButton: {
+    padding: '8px 16px',
+    backgroundColor: '#ff4d4d',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '14px',
+  },
+  noBlogs: {
+    textAlign: 'center',
+    color: '#555',
+  },
+  readMoreButton: {
+    backgroundColor: '#28a745', // Green color
+    color: 'white',
+    padding: '8px 16px',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+  },
+};
+
 
 export default BlogList;
