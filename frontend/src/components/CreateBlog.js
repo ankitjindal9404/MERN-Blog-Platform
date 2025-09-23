@@ -26,7 +26,7 @@ function CreateBlog() {
       alert('Blog created successfully!');
       navigate('/'); // Navigate to blog list
     } catch (err) {
-      setError('Error: ' + err.response?.data?.msg || 'Server error');
+      alert('Error: Please login again');
     }
   };
 

@@ -37,7 +37,7 @@ function BlogList() {
     } catch (err) {
       console.error('Error deleting the blog:', err);
       console.error('Error response:', err.response);  // Log the error response for debugging
-      alert('Error deleting the blog: ' + (err.response?.data?.msg || 'Server error'));
+      alert('Please log in again to continue.');
     }
   };
 
