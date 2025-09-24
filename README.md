@@ -35,11 +35,11 @@ To run the application, make sure both the frontend and backend are set up and r
 
 ### Setup Frontend
 
-For details on setting up the frontend, visit the Frontend README.
+For details on setting up the frontend, visit: `[Frontend README](./frontend/README.md)`
 
 ### Setup Backend
 
-For details on setting up the backend, visit the Backend README.
+For details on setting up the backend, visit: `[Backend README](./backend/README.md)`
 
 Visit http://localhost:3000 to see the application in action.
 
