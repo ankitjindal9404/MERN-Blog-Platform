@@ -31,11 +31,6 @@ This is the frontend part of the Blog Platform, built with React.js. It is respo
    npm install
    npm start
 
-3. Create a .env file in the root of the frontend directory and add the following:
-
-   ```bash
-   npm install
-
 This will start the frontend application at http://localhost:3000.
 
 ### Available Scripts
