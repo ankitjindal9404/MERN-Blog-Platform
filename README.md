@@ -1,5 +1,3 @@
-1. Root Directory README.md
-
 This file will serve as the main entry point to your project, giving an overview and linking to the individual frontend and backend sections.
 # Blog Platform
 
@@ -31,29 +29,20 @@ Before you begin, ensure you have the following installed:
 
 Follow the installation instructions for the Frontend and Backend below.
 
-Setup Frontend
-
-For details on setting up the frontend, visit the Frontend README
-.
-
-Setup Backend
-
-For details on setting up the backend, visit the Backend README
-.
-
-Running the Application
+## Running the Application
 
 To run the application, make sure both the frontend and backend are set up and running:
 
-Start the backend by following the Backend README
-.
+### Setup Frontend
 
-Start the frontend by following the Frontend README
-.
+For details on setting up the frontend, visit the Frontend README.
+
+### Setup Backend
+
+For details on setting up the backend, visit the Backend README.
 
 Visit http://localhost:3000 to see the application in action.
 
-License
+## License
 
-This project is licensed under the MIT License - see the LICENSE
- file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
