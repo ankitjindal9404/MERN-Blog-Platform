@@ -40,8 +40,6 @@ This will start the frontend application at http://localhost:3000.
 
 ### Available Scripts
 
-npm start: Starts the development server.
-
-npm run build: Builds the app for production to the build folder.
-
-npm test: Runs the test suite.
+1. **`npm start`**: Starts the development server.
+2. **`npm run build`**: Builds the app for production to the `build` folder.
+3. **`npm test`**: Runs the test suite.
