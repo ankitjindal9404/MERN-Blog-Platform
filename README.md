@@ -21,7 +21,7 @@ Before you begin, ensure you have the following installed:
 
 ## Installation
 
-1. Clone this repository:
+Clone this repository:
 
    ```bash
    git clone https://github.com/ankitjindal9404/MERN-Blog-Platform.git
