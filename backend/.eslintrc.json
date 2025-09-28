@@ -4,7 +4,11 @@
     "node": true
   },
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:jest/recommended"
+  ],
+  "plugins": [
+    "jest"
   ],
   "rules": {
     "no-unused-vars": "warn",

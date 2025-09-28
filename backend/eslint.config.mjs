@@ -1,10 +1,28 @@
-import js from "@eslint/js";
-import globals from "globals";
-import json from "@eslint/json";
-import { defineConfig } from "eslint/config";
+import eslintPluginJest from 'eslint-plugin-jest';
 
-export default defineConfig([
-  { files: ["**/*.{js,mjs,cjs}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: globals.node } },
-  { files: ["**/*.js"], languageOptions: { sourceType: "commonjs" } },
-  { files: ["**/*.json"], plugins: { json }, language: "json/json", extends: ["json/recommended"] },
-]);
+export default [
+  {
+    languageOptions: {
+      sourceType: 'module', // Use ES module syntax
+      ecmaVersion: 2026, // Use the appropriate ECMAScript version
+      globals: {
+        // Jest globals
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        describe: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        jest: 'readonly',
+      }
+    },
+    plugins: {
+      jest: eslintPluginJest,
+    },
+    rules: {
+      'no-unused-vars': 'warn',
+      'no-console': 'warn',
+      'jest/valid-expect': 'error',
+      'jest/no-disabled-tests': 'warn',
+    },
+  }
+];
