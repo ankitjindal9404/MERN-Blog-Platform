@@ -31,7 +31,7 @@ const PORT = process.env.PORT || 5000;
 
 // Remove the app.listen() in the test environment
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(process.env.PORT || 5000, () => {
+  app.listen(PORT, () => {
     console.log('Server running on port 5000');
   });
 }

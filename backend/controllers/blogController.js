@@ -7,6 +7,7 @@ exports.getBlogs = async (req, res) => {
     const blogs = await Blog.find().populate('author', 'username');
     res.json(blogs);
   } catch (err) {
+    console.error(err); // Log the error
     res.status(500).json({ msg: 'Server error' });
   }
 };
@@ -20,6 +21,7 @@ exports.createBlog = async (req, res) => {
     await newBlog.save();
     res.status(201).json(newBlog);
   } catch (err) {
+    console.error(err); // Log the error
     res.status(500).json({ msg: 'Server error' });
   }
 };
