@@ -1,11 +1,11 @@
 # Stage 1: Build Stage
-FROM node:alpine AS build
+FROM node:16-slim AS build
 
 # Set the working directory in the build stage
 WORKDIR /app
 
 # Copy package.json and package-lock.json (if it exists) for dependency installation
-COPY package.json . 
+COPY package.json .
 
 # Install dependencies (using --legacy-peer-deps if needed)
 RUN npm install --legacy-peer-deps
@@ -14,7 +14,7 @@ RUN npm install --legacy-peer-deps
 COPY . .
 
 # Stage 2: Production Stage (Final Image)
-FROM node:alpine
+FROM node:16-slim
 
 # Set the working directory in the production stage
 WORKDIR /app
