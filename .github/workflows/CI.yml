@@ -169,7 +169,7 @@ jobs:
       with:
         image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/my-blogs-backend:${{github.run_id}}
         format: 'table'
-        output: 'trivy-frontend-image-report.txt'
+        output: 'trivy-backend-image-report.txt'
         severity: 'CRITICAL,HIGH'
 
     # Debugging: List files before uploading artifacts for backend image scan
@@ -216,15 +216,6 @@ jobs:
     if: always()
 
     steps:
-
-    - name: List downloaded files (for debugging)
-      run: |
-        echo "Listing downloaded files"
-        ls -al /home/runner/work/MERN-Blog-Platform/MERN-Blog-Platform/
-        ls -al trivy-backend-fs-report/
-        ls -al trivy-frontend-fs-report/
-        ls -al trivy-frontend-image-report/
-        ls -al trivy-backend-image-report/
 
     - name: Download all Trivy reports
       uses: actions/download-artifact@v4
