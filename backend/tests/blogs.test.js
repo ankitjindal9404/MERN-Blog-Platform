@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const request = require('supertest');
 const app = require('../server'); // Assuming your Express app is in server.js
 const mongoose = require('mongoose');
