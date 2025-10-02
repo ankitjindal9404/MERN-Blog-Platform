@@ -203,7 +203,7 @@ jobs:
 
     steps:
     - name: Download all Trivy reports
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
 
     - name: Prepare email body
       run: |
