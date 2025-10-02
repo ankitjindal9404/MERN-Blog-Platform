@@ -36,6 +36,9 @@ jobs:
       run: |
         cd backend
         npm test
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          NODE_ENV: test
 
     - name: Lint backend code
       run: |
