@@ -172,6 +172,14 @@ jobs:
         output: 'trivy-frontend-image-report.txt'
         severity: 'CRITICAL,HIGH'
 
+    # Debugging: List files before uploading artifacts for backend image scan
+    - name: List files before upload (backend image)
+      run: |
+        echo "Listing files in the backend image scan directory"
+        ls -al .  # Check current directory where the reports are generated
+        ls -al trivy-backend-image-report.txt  # Check if the specific report exists
+
+
     - name: Upload backend image scan report
       uses: actions/upload-artifact@v4
       if: always()
@@ -208,6 +216,16 @@ jobs:
     if: always()
 
     steps:
+
+    - name: List downloaded files (for debugging)
+      run: |
+        echo "Listing downloaded files"
+        ls -al /home/runner/work/MERN-Blog-Platform/MERN-Blog-Platform/
+        ls -al trivy-backend-fs-report/
+        ls -al trivy-frontend-fs-report/
+        ls -al trivy-frontend-image-report/
+        ls -al trivy-backend-image-report/
+
     - name: Download all Trivy reports
       uses: actions/download-artifact@v4
 
