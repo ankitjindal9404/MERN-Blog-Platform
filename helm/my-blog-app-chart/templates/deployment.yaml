@@ -1,0 +1,49 @@
+# Backend Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-backend
+  labels:
+    app: blog-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog-backend
+  template:
+    metadata:
+      labels:
+        app: blog-backend
+    spec:
+      containers:
+      - name: blog-backend
+        image: ankitjindal9404/my-blogs-backend:{{ .Values.image.tag }}
+        ports:
+        - containerPort: 5000 # or whatever port your backend listens to
+        env:
+        - name: MONGO_URI
+          value: mongodb+srv://ankitjindal9404:ADBDy2wC8IInn6jE@cluster0.phmhtgh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+---
+# Frontend Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-frontend
+  labels:
+    app: blog-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog-frontend
+  template:
+    metadata:
+      labels:
+        app: blog-frontend
+    spec:
+      containers:
+      - name: blog-frontend
+        image: ankitjindal9404/my-blogs-frontend:{{ .Values.image.tag }}
+        ports:
+        - containerPort: 3000 # or whatever port your frontend listens to
