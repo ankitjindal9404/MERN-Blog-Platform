@@ -77,3 +77,60 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         projectBaseDir: frontend
+
+  push:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and Push action for frontend
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: ./frontend/Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-blog-app:${{github.run_id}}
+
+    - name: Build and Push action for backend
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: ./backend/Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-blog-app:${{github.run_id}}
+
+  update-newtag-in-helm-chart:
+    runs-on: ubuntu-latest
+
+    needs: push
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.TOKEN }}
+
+    - name: Update tag in Helm chart
+      run: |
+        sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/my-blog-app-chart/values.yaml
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "jindalankit940@gmail.com"
+        git config --global user.name "Ankit Jindal"
+        git add helm/my-blog-app-chart/values.yaml
+        git commit -m "Update tag in Helm chart"
+        git push
