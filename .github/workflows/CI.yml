@@ -36,7 +36,7 @@ jobs:
       run: |
         cd backend
         npm test
-        env:
+      env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
           NODE_ENV: test
 
