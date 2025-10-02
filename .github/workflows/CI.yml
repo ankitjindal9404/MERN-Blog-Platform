@@ -106,7 +106,7 @@ jobs:
         context: ./frontend
         file: ./frontend/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-blog-app:${{github.run_id}}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-blogs-frontend:${{github.run_id}}
 
     - name: Build and Push action for backend
       uses: docker/build-push-action@v6
@@ -114,7 +114,7 @@ jobs:
         context: ./backend
         file: ./backend/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-blog-app:${{github.run_id}}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-blogs-backend:${{github.run_id}}
 
   update-newtag-in-helm-chart:
     runs-on: ubuntu-latest
