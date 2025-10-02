@@ -17,8 +17,13 @@ function Register() {
       return;
     }
 
+    const apiUrl = window.location.hostname === 'localhost' 
+      ? 'http://localhost:5000' 
+      : 'http://my-blog-app.local';
+
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', {
+      // const response = await axios.post('http://localhost:5000/api/auth/register', {
+      const response = await axios.post(`${apiUrl}/api/auth/register`, {
         username,
         email,
         password,

@@ -17,9 +17,14 @@ function CreateBlog() {
       return;
     }
 
+const apiUrl = window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000' 
+  : 'http://my-blog-app.local';
+
     try {
       await axios.post(
-        'http://localhost:5000/api/blogs',
+        // 'http://localhost:5000/api/blogs',
+        `${apiUrl}/api/blogs`,
         { title, content },
         { headers: { 'x-auth-token': token } }
       );

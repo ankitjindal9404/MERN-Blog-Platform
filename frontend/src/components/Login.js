@@ -8,9 +8,14 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+
+    const apiUrl = window.location.hostname === 'localhost' 
+      ? 'http://localhost:5000' 
+      : 'http://my-blog-app.local';
     
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      // const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+    const response = await axios.post(`${apiUrl}/api/auth/login`, { email, password });
       
       localStorage.setItem('token', response.data.token);
       alert('Login successful!');

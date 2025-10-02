@@ -4,11 +4,16 @@ import axios from 'axios';
 function BlogList() {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState('');
+  // Dynamically set backend API URL based on hostname
+  const apiUrl = window.location.hostname === 'localhost' 
+    ? 'http://localhost:5000' 
+    : 'http://my-blog-app.local';
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/blogs');
+        // const response = await axios.get('http://localhost:5000/api/blogs');
+        const response = await axios.get(`${apiUrl}/api/blogs`);
         setBlogs(response.data);
       } catch (err) {
         setError('Error fetching blogs: ' + err.response?.data?.msg || 'Server error');
@@ -26,7 +31,8 @@ function BlogList() {
     }
 
     try {
-      const response = await axios.delete(`http://localhost:5000/api/blogs/${id}`, {
+      // const response = await axios.delete(`http://localhost:5000/api/blogs/${id}`, {
+      await axios.delete(`${apiUrl}/api/blogs/${id}`, {
         headers: {
           'x-auth-token': token, // Send the JWT token to authenticate
         },

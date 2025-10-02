@@ -2,8 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: my-blog-app
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
@@ -17,7 +15,7 @@ spec:
             name: blog-frontend
             port:
               number: 80
-      - path: /api/blogs
+      - path: /api/
         pathType: Prefix
         backend:
           service:
