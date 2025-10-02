@@ -96,10 +96,14 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    - name: List files in frontend directory
+      run: |
+        ls -al frontend
+
     - name: Build and Push action for frontend
       uses: docker/build-push-action@v6
       with:
-        context: .
+        context: ./frontend
         file: ./frontend/Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-blog-app:${{github.run_id}}
@@ -107,7 +111,7 @@ jobs:
     - name: Build and Push action for backend
       uses: docker/build-push-action@v6
       with:
-        context: .
+        context: ./backend
         file: ./backend/Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-blog-app:${{github.run_id}}
