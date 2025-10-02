@@ -236,8 +236,7 @@ jobs:
     - name: Extract frontend image scan report
       run: |
         tar -xzf trivy-frontend-image-report.tar.gz
-        ls -al trivy-frontend-image-report  # Debugging step to list extracted files
-
+        
     - name: Download and extract backend image scan report
       uses: actions/download-artifact@v4
       with:
@@ -246,8 +245,6 @@ jobs:
     - name: Extract backend image scan report
       run: |
         tar -xzf trivy-backend-image-report.tar.gz
-        ls -al trivy-backend-image-report  # Debugging step to list extracted files
-
     # - name: Verify files to attach
     #   run: |
     #     ls -al trivy-backend-fs-report.txt trivy-frontend-fs-report.txt trivy-frontend-image-report.txt trivy-backend-image-report.txt || echo "One or more files missing"
