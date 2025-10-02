@@ -63,12 +63,6 @@ jobs:
         output: 'trivy-backend-fs-report.txt'
         severity: 'CRITICAL,HIGH'
 
-    - name: List files before upload (backend)
-      run: |
-        echo "Listing files in the backend scan directory"
-        ls -al .  # Check current directory where the reports are generated
-        ls -al trivy-backend-fs-report.txt  # Check if the specific report exists
-
     - name: Upload backend filesystem scan report
       uses: actions/upload-artifact@v4
       if: always()
@@ -236,7 +230,7 @@ jobs:
     - name: Extract frontend image scan report
       run: |
         tar -xzf trivy-frontend-image-report.tar.gz
-        
+
     - name: Download and extract backend image scan report
       uses: actions/download-artifact@v4
       with:
@@ -245,10 +239,6 @@ jobs:
     - name: Extract backend image scan report
       run: |
         tar -xzf trivy-backend-image-report.tar.gz
-    # - name: Verify files to attach
-    #   run: |
-    #     ls -al trivy-backend-fs-report.txt trivy-frontend-fs-report.txt trivy-frontend-image-report.txt trivy-backend-image-report.txt || echo "One or more files missing"
-
 
     - name: Prepare email body
       run: |
@@ -281,8 +271,3 @@ jobs:
           trivy-frontend-fs-report.txt
           trivy-frontend-image-report.txt
           trivy-backend-image-report.txt
-        #   trivy-backend-fs-report/trivy-backend-fs-report.txt
-        #   trivy-frontend-fs-report/trivy-frontend-fs-report.txt
-        #   trivy-frontend-image-report/trivy-frontend-image-report.txt
-        #   trivy-backend-image-report/trivy-backend-image-report.txt
-        # ignore_missing_attachments: true
