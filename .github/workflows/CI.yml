@@ -166,6 +166,12 @@ jobs:
         output: 'trivy-frontend-image-report.txt'
         severity: 'CRITICAL,HIGH'
 
+    - name: List files before upload (backend)
+      run: |
+        echo "Listing files in the backend scan directory"
+        ls -al .  # Check current directory where the reports are generated
+        ls -al trivy-backend-fs-report.txt  # Check if the specific report exists
+
     - name: Upload backend image scan report
       uses: actions/upload-artifact@v4
       if: always()
