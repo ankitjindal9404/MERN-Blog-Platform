@@ -1,0 +1,58 @@
+# CICD using GitHub actions
+
+name: CI/CD
+
+# Exclude the workflow to run on changes to the helm chart
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'helm/**'
+      - 'k8s/**'
+      - 'README.md'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install Backend dependencies
+      run: |
+        cd backend
+        npm Install
+        npm install -g nodemon
+
+    - name: Run backend tests
+      run: |
+        cd backend
+        npm test
+
+    - name: Lint backend code
+      run: |
+        cd backend
+        npm run lint
+
+    - name: Install Frontend dependencies
+      run: |
+        cd frontend
+        npm install --legacy-peer-deps
+
+    - name: Run frontend tests
+      run: |
+        cd frontend
+        npm test
+
+    - name: Lint frontend code
+      run: |
+        cd frontend
+        npm run lint
