@@ -29,7 +29,7 @@ jobs:
     - name: Install Backend dependencies
       run: |
         cd backend
-        npm Install
+        npm install
         npm install -g nodemon
 
     - name: Run backend tests
