@@ -156,13 +156,17 @@ jobs:
         format: 'table'
         output: 'trivy-frontend-image-report.txt'
         severity: 'CRITICAL,HIGH'
+
+    - name: Compress scan reports before upload (frontend image)
+      run: |
+        tar -czf trivy-frontend-image-report.tar.gz trivy-frontend-image-report.txt
     
-    - name: Upload frontend image scan report
+    - name: Upload compressed frontend image scan report
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: trivy-frontend-image-report
-        path: trivy-frontend-image-report.txt
+        path: trivy-frontend-image-report.tar.gz
 
     - name: Run Trivy image scan on backend
       uses: aquasecurity/trivy-action@master
@@ -172,20 +176,17 @@ jobs:
         output: 'trivy-backend-image-report.txt'
         severity: 'CRITICAL,HIGH'
 
-    # Debugging: List files before uploading artifacts for backend image scan
-    - name: List files before upload (backend image)
+    - name: Compress scan reports before upload (backend image)
       run: |
-        echo "Listing files in the backend image scan directory"
-        ls -al .  # Check current directory where the reports are generated
-        ls -al trivy-backend-image-report.txt  # Check if the specific report exists
+        tar -czf trivy-backend-image-report.tar.gz trivy-backend-image-report.txt
 
 
-    - name: Upload backend image scan report
+    - name: Upload compressed backend image scan report
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: trivy-backend-image-report
-        path: trivy-backend-image-report.txt
+        path: trivy-backend-image-report.tar.gz
         
   update-newtag-in-helm-chart:
     runs-on: ubuntu-latest
@@ -216,6 +217,24 @@ jobs:
     if: always()
 
     steps:
+
+    - name: Download and extract frontend image scan report
+      uses: actions/download-artifact@v4
+      with:
+        name: trivy-frontend-image-report
+
+    - name: Extract frontend image scan report
+      run: |
+        tar -xzf trivy-frontend-image-report.tar.gz
+
+    - name: Download and extract backend image scan report
+      uses: actions/download-artifact@v4
+      with:
+        name: trivy-backend-image-report
+
+    - name: Extract backend image scan report
+      run: |
+        tar -xzf trivy-backend-image-report.tar.gz
 
     - name: Download all Trivy reports
       uses: actions/download-artifact@v4
