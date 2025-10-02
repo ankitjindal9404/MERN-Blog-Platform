@@ -46,6 +46,15 @@ jobs:
         cd backend
         npm run lint
 
+    - name: SonarQube Scan - Backend
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        projectBaseDir: backend
+
+
     - name: Install Frontend dependencies
       run: |
         cd frontend
@@ -60,3 +69,11 @@ jobs:
       run: |
         cd frontend
         npm run lint
+
+    - name: SonarQube Scan - Frontend
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        projectBaseDir: frontend
