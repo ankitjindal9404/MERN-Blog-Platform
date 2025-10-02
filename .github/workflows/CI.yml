@@ -218,6 +218,16 @@ jobs:
 
     steps:
 
+    - name: Download backend fs scan report
+      uses: actions/download-artifact@v4
+      with:
+        name: trivy-backend-fs-report
+
+    - name: Download frontend fs scan report
+      uses: actions/download-artifact@v4
+      with:
+        name: trivy-frontend-fs-report
+
     - name: Download and extract frontend image scan report
       uses: actions/download-artifact@v4
       with:
@@ -235,9 +245,6 @@ jobs:
     - name: Extract backend image scan report
       run: |
         tar -xzf trivy-backend-image-report.tar.gz
-
-    - name: Download all Trivy reports
-      uses: actions/download-artifact@v4
 
     - name: Prepare email body
       run: |
