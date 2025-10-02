@@ -64,7 +64,7 @@ jobs:
         severity: 'CRITICAL,HIGH'
 
     - name: Upload backend filesystem scan report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: trivy-backend-fs-report
@@ -103,7 +103,7 @@ jobs:
         severity: 'CRITICAL,HIGH'
 
     - name: Upload frontend filesystem scan report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: trivy-frontend-fs-report
@@ -152,7 +152,7 @@ jobs:
         severity: 'CRITICAL,HIGH'
     
     - name: Upload frontend image scan report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: trivy-frontend-image-report
@@ -167,7 +167,7 @@ jobs:
         severity: 'CRITICAL,HIGH'
 
     - name: Upload backend image scan report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: trivy-backend-image-report
