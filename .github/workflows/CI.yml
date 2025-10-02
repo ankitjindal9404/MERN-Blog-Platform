@@ -246,6 +246,18 @@ jobs:
       run: |
         tar -xzf trivy-backend-image-report.tar.gz
 
+    - name: List files before sending email
+      run: |
+        echo "Listing files before email"
+        ls -al
+        ls -al trivy-backend-image-report
+        ls -al trivy-frontend-image-report
+
+    - name: Verify files to attach
+      run: |
+        ls -al trivy-backend-fs-report.txt trivy-frontend-fs-report.txt trivy-frontend-image-report.txt trivy-backend-image-report.txt || echo "One or more files missing"
+
+
     - name: Prepare email body
       run: |
         echo "Trivy Security Scan Reports - CI/CD Pipeline" > email_body.txt
@@ -273,8 +285,12 @@ jobs:
         from: CI/CD Pipeline
         body: file://email_body.txt
         attachments: |
-          trivy-backend-fs-report/trivy-backend-fs-report.txt
-          trivy-frontend-fs-report/trivy-frontend-fs-report.txt
-          trivy-frontend-image-report/trivy-frontend-image-report.txt
-          trivy-backend-image-report/trivy-backend-image-report.txt
+          trivy-backend-fs-report.txt
+          trivy-frontend-fs-report.txt
+          trivy-frontend-image-report.txt
+          trivy-backend-image-report.txt
+        #   trivy-backend-fs-report/trivy-backend-fs-report.txt
+        #   trivy-frontend-fs-report/trivy-frontend-fs-report.txt
+        #   trivy-frontend-image-report/trivy-frontend-image-report.txt
+        #   trivy-backend-image-report/trivy-backend-image-report.txt
         # ignore_missing_attachments: true
