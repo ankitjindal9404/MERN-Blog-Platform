@@ -5,10 +5,10 @@ FROM node:16-slim AS build
 WORKDIR /app
 
 # Copy package.json and package-lock.json (if it exists) for dependency installation
-COPY package.json .
+COPY package*.json .
 
 # Install dependencies (using --legacy-peer-deps if needed)
-RUN npm install --legacy-peer-deps
+RUN npm cache clean --force && npm install --legacy-peer-deps
 
 # Copy the rest of the application files
 COPY . .
