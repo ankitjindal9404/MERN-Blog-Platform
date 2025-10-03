@@ -22,6 +22,8 @@ spec:
         ports:
         - containerPort: 5000 # or whatever port your backend listens to
         env:
+        - name: JWT_SECRET
+          value: mysecretkey
         - name: MONGO_URI
           value: mongodb+srv://ankitjindal9404:ADBDy2wC8IInn6jE@cluster0.phmhtgh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
