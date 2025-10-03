@@ -2,7 +2,7 @@
 
 name: CI/CD
 
-# Exclude workflow to run on changes to the helm chart
+# Exclude workflow to run on changes to helm chart
 on:
   push:
     branches:
