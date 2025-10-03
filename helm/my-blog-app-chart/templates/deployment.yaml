@@ -5,6 +5,7 @@ metadata:
   name: blog-backend
   labels:
     app: blog-backend
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -32,6 +33,7 @@ metadata:
   name: blog-frontend
   labels:
     app: blog-frontend
+  namespace: default
 spec:
   replicas: 1
   selector:

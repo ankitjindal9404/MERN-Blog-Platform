@@ -5,6 +5,7 @@ metadata:
   name: blog-backend
   labels:
     app: blog-backend
+  namespace: default
 spec:
   selector:
     app: blog-backend
@@ -22,6 +23,7 @@ metadata:
   name: blog-frontend
   labels:
     app: blog-frontend
+  namespace: default
 spec:
   selector:
     app: blog-frontend
