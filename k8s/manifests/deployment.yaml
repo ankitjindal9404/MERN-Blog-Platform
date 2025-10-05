@@ -22,7 +22,7 @@ spec:
         - containerPort: 5000 # or whatever port your backend listens to
         env:
         - name: MONGO_URI
-          value: mongodb+srv://ankitjindal9404:ADBDy2wC8IInn6jE@cluster0.phmhtgh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+          value: mongodb+srv://username:password@cluster0.phmhtgh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 ---
 # Frontend Deployment
