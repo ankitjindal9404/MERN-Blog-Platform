@@ -1,8 +1,4 @@
-# **Frontend README.md**
-
-This file explains how to set up and run the frontend React application.
-
-## Blog Platform - Frontend
+# Blog Platform - Frontend README.MD
 
 This is the frontend part of the Blog Platform, built with React.js. It is responsible for the user interface, allowing users to register, log in, and manage blog posts.
 
@@ -36,5 +32,5 @@ This will start the frontend application at http://localhost:3000.
 ### Available Scripts
 
 1. **`npm start`**: Starts the development server.
-2. **`npm run build`**: Builds the app for production to the `build` folder.
+2. **`npm run lint`**: Lint checks.
 3. **`npm test`**: Runs the test suite.

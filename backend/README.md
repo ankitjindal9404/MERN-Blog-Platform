@@ -41,3 +41,9 @@ This is the backend part of the Blog Platform, built with Node.js and Express.js
    nodemon server.js
 
 This will start the backend API at http://localhost:5000/api/blogs.
+
+### Available Scripts
+
+1. **`nodmon server.js`**: Starts the development server.
+2. **`npm run lint`**: Lint checks.
+3. **`npm test`**: Runs the test suite.

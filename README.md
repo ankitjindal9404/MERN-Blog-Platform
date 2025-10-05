@@ -1,7 +1,22 @@
-This file will serve as the main entry point to your project, giving an overview and linking to the individual frontend and backend sections.
-# Blog Platform
+# MERN Blog Platform - Deployed on AWS EKS with Helm, ArgoCD, and Docker
 
 A blog platform built using the MERN stack (MongoDB, Express.js, React.js, Node.js). This project allows users to create, read, and delete blog posts. It also includes user authentication.
+
+This project includes a full CI/CD setup with unit tests, linting, SonarQube analysis, Trivy scans for frontend and backend, container builds to Docker Hub, and deployment to an Amazon EKS cluster using Helm charts and ArgoCD.
+
+---
+
+## Tech stack
+
+- **App**: MERN
+- **Database**: MongoDB Atlas
+- **Container**: Docker
+- **Orchestration**: Amazon EKS
+- **GitOps**: ArgoCD
+- **Quality**: ESLint, Jest, SonarCloud, Trivy
+- **CI/CD**: GitHub Actions
+
+---
 
 ## Project Structure
 
@@ -17,7 +32,8 @@ You can find the `README.md` files for both the frontend and backend in their re
 Before you begin, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (LTS version)
-- [MongoDB](https://www.mongodb.com/) or [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- For deployment: AWS account, an EKS cluster, kubectl, Helm, and Argo CD
 
 ## Installation
 
