@@ -42,7 +42,3 @@ For details on setting up the frontend, visit: [Frontend README](./frontend/READ
 For details on setting up the backend, visit: [Backend README](./backend/README.md)
 
 Visit http://localhost:3000 to see the application in action.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
